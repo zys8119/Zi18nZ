@@ -5,13 +5,13 @@
 ## 安装
 
 ```angular2html
-npm i Zi18nZ
+npm i zi18nz
 ```
 ## 配置
 
 ```angular2html
 //国际化
-import Zi18nZ from "Zi18nZ"
+import Zi18nZ from "zi18nz"
 Vue.use(Zi18nZ)
 ```
 
