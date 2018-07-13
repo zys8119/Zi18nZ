@@ -1,7 +1,7 @@
 {
-  "name": "Zi18nZ",
+  "name": "zi18nz",
   "version": "0.0.1",
-  "description": "vue·­Òë²å¼ş",
+  "description": "vueç¿»è¯‘æ’ä»¶",
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/zys8119/Zi18nZ.git"
   },
-  "author": "ÕÅÔÆÉ½",
+  "author": "å¼ äº‘å±±",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/zys8119/Zi18nZ/issues"
