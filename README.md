@@ -47,18 +47,18 @@ Vue.use(Zi18nZ)
                 goods:'en'
             });
             //设置全局语言模板
-            this.action({
-                moduleName:'$t_langs',
-                goods:{
-                    en:{
-                        test:"test1"
-                    },
-                    cn:{
-                        test:"测试1"
-                    },
-                    //....
-                }
-            });
+            //创建 @/langs/index.js 文件，配置文件
+            /*示例：index.js
+            export default {
+                        en:{
+                            //...
+                        },
+                        cn:{
+                            //...
+                        }
+                        //....
+                    }
+            */
         }
     }
 </script>

@@ -1,7 +1,22 @@
 let langs = {};
 try {
-    langs = require('./lang.json');
-}catch (e){}
+    langs = require("@/langs/index.js").default;
+}catch (e){
+    console.error(`【zi18nz】警告警告：请确认 @ 路径下的 'langs/index.js' 是否存在。如果存在且该警告还在，请手动重新引用加载store-vue或者重启项目`)
+    console.warn(`'langs/index.js' 是用于设置vue全局翻译语言包\n
+    示例:utils/index.js
+    
+        export default {
+            en:{
+                //...
+            },
+            cn:{
+                //...
+            }
+            //....
+        }
+    `)
+}
 
 const plugin = {
     install (Vue) {
