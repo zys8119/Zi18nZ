@@ -1,46 +1,41 @@
-let langs = {};
+"use strict";
+exports.__esModule = true;
+var langs = {};
 try {
-    langs = require("@/langs/index.js").default;
-}catch (e){
-    console.error(`【zi18nz】警告警告：请确认 @ 路径下的 'langs/index.js' 是否存在。如果存在且该警告还在，请手动重新引用加载store-vue或者重启项目`)
-    console.warn(`'langs/index.js' 是用于设置vue全局翻译语言包\n
-    示例:utils/index.js
-    
-        export default {
-            en:{
-                //...
-            },
-            cn:{
-                //...
-            }
-            //....
-        }
-    `)
+    langs = require("@/langs/index.js")["default"];
 }
-
-const plugin = {
-    install (Vue) {
+catch (e) {
+    console.error("\u3010zi18nz\u3011\u8B66\u544A\u8B66\u544A\uFF1A\u8BF7\u786E\u8BA4 @ \u8DEF\u5F84\u4E0B\u7684 'langs/index.js' \u662F\u5426\u5B58\u5728\u3002\u5982\u679C\u5B58\u5728\u4E14\u8BE5\u8B66\u544A\u8FD8\u5728\uFF0C\u8BF7\u624B\u52A8\u91CD\u65B0\u5F15\u7528\u52A0\u8F7Dstore-vue\u6216\u8005\u91CD\u542F\u9879\u76EE");
+    console.warn("'langs/index.js' \u662F\u7528\u4E8E\u8BBE\u7F6Evue\u5168\u5C40\u7FFB\u8BD1\u8BED\u8A00\u5305\n\n    \u793A\u4F8B:utils/index.js\n    \n        export default {\n            en:{\n                //...\n            },\n            cn:{\n                //...\n            }\n            //....\n        }\n    ");
+}
+var plugin = {
+    install: function (Vue) {
         Vue.mixin({
-            computed:{
-                $t(){
-                    return (keyName) => {
+            computed: {
+                $t: function () {
+                    var _this = this;
+                    return function (keyName) {
                         try {
                             try {
-                                if(this.$data.$t_t && this.$data.$t_t[this.airforce.$t] && this.$data.$t_t[this.airforce.$t][keyName]){
-                                    return this.$data.$t_t[this.airforce.$t][keyName];
+                                if (_this.$data.$t_t && _this.$data.$t_t[_this.airforce.$t] && _this.$data.$t_t[_this.airforce.$t][keyName]) {
+                                    return _this.$data.$t_t[_this.airforce.$t][keyName];
                                 }
-                            }catch (e){}
+                            }
+                            catch (e) { }
                             try {
-                                if(this.airforce && this.airforce.$t_langs){
-                                    langs = this.airforce.$t_langs;
+                                if (_this.airforce && _this.airforce.$t_langs) {
+                                    langs = _this.airforce.$t_langs;
                                 }
-                            }catch (e){}
-                            if(typeof langs[this.airforce.$t][keyName] != "undefined"){
-                                return langs[this.airforce.$t][keyName]
-                            }else {
+                            }
+                            catch (e) { }
+                            if (typeof langs[_this.airforce.$t][keyName] != "undefined") {
+                                return langs[_this.airforce.$t][keyName];
+                            }
+                            else {
                                 return keyName;
                             }
-                        }catch (e){
+                        }
+                        catch (e) {
                             return keyName;
                         }
                     };
@@ -48,7 +43,6 @@ const plugin = {
             }
         });
     }
-}
-
-export default plugin
-export const install = plugin.install
+};
+exports["default"] = plugin;
+exports.install = plugin.install;
