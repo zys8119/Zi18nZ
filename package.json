@@ -1,6 +1,6 @@
 {
   "name": "zi18nz",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "vue翻译插件",
   "main": "index.js",
   "bin": "index.js",

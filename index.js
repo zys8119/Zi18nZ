@@ -36,7 +36,7 @@ var plugin = {
                 return keyName;
             }
         };
-        Vue.prototype.$t = $t;
+        Vue.prototype.$zi18nz = $t;
         Vue.mixin({
             computed: {
                 $t: function () {
