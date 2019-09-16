@@ -21,11 +21,14 @@ try {
 
 const plugin = {
     install (Vue) {
-        let $t = (keyName) => {
+        let $t = function(keyName,langKeyName) {
             try {
                 try {
+                    langKeyName = this.airforce.$t;
+                }catch (e) {}
+                try {
                     if(this.$data.$t_t && this.$data.$t_t[this.airforce.$t] && this.$data.$t_t[this.airforce.$t][keyName]){
-                        return this.$data.$t_t[this.airforce.$t][keyName];
+                        return this.$data.$t_t[langKeyName][keyName];
                     }
                 }catch (e){}
                 try {
@@ -33,8 +36,8 @@ const plugin = {
                         langs = this.airforce.$t_langs;
                     }
                 }catch (e){}
-                if(typeof langs[this.airforce.$t][keyName] != "undefined"){
-                    return langs[this.airforce.$t][keyName]
+                if(typeof langs[langKeyName][keyName] != "undefined"){
+                    return langs[langKeyName][keyName]
                 }else {
                     return keyName;
                 }

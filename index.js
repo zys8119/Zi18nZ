@@ -10,23 +10,26 @@ catch (e) {
 }
 var plugin = {
     install: function (Vue) {
-        var _this = this;
-        var $t = function (keyName) {
+        var $t = function (keyName, langKeyName) {
             try {
                 try {
-                    if (_this.$data.$t_t && _this.$data.$t_t[_this.airforce.$t] && _this.$data.$t_t[_this.airforce.$t][keyName]) {
-                        return _this.$data.$t_t[_this.airforce.$t][keyName];
+                    langKeyName = this.airforce.$t;
+                }
+                catch (e) { }
+                try {
+                    if (this.$data.$t_t && this.$data.$t_t[this.airforce.$t] && this.$data.$t_t[this.airforce.$t][keyName]) {
+                        return this.$data.$t_t[langKeyName][keyName];
                     }
                 }
                 catch (e) { }
                 try {
-                    if (_this.airforce && _this.airforce.$t_langs) {
-                        langs = _this.airforce.$t_langs;
+                    if (this.airforce && this.airforce.$t_langs) {
+                        langs = this.airforce.$t_langs;
                     }
                 }
                 catch (e) { }
-                if (typeof langs[_this.airforce.$t][keyName] != "undefined") {
-                    return langs[_this.airforce.$t][keyName];
+                if (typeof langs[langKeyName][keyName] != "undefined") {
+                    return langs[langKeyName][keyName];
                 }
                 else {
                     return keyName;
