@@ -10,35 +10,37 @@ catch (e) {
 }
 var plugin = {
     install: function (Vue) {
+        var _this = this;
+        var $t = function (keyName) {
+            try {
+                try {
+                    if (_this.$data.$t_t && _this.$data.$t_t[_this.airforce.$t] && _this.$data.$t_t[_this.airforce.$t][keyName]) {
+                        return _this.$data.$t_t[_this.airforce.$t][keyName];
+                    }
+                }
+                catch (e) { }
+                try {
+                    if (_this.airforce && _this.airforce.$t_langs) {
+                        langs = _this.airforce.$t_langs;
+                    }
+                }
+                catch (e) { }
+                if (typeof langs[_this.airforce.$t][keyName] != "undefined") {
+                    return langs[_this.airforce.$t][keyName];
+                }
+                else {
+                    return keyName;
+                }
+            }
+            catch (e) {
+                return keyName;
+            }
+        };
+        Vue.prototype.$t = $t;
         Vue.mixin({
             computed: {
                 $t: function () {
-                    var _this = this;
-                    return function (keyName) {
-                        try {
-                            try {
-                                if (_this.$data.$t_t && _this.$data.$t_t[_this.airforce.$t] && _this.$data.$t_t[_this.airforce.$t][keyName]) {
-                                    return _this.$data.$t_t[_this.airforce.$t][keyName];
-                                }
-                            }
-                            catch (e) { }
-                            try {
-                                if (_this.airforce && _this.airforce.$t_langs) {
-                                    langs = _this.airforce.$t_langs;
-                                }
-                            }
-                            catch (e) { }
-                            if (typeof langs[_this.airforce.$t][keyName] != "undefined") {
-                                return langs[_this.airforce.$t][keyName];
-                            }
-                            else {
-                                return keyName;
-                            }
-                        }
-                        catch (e) {
-                            return keyName;
-                        }
-                    };
+                    return $t;
                 }
             }
         });
